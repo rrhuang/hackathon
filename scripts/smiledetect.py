@@ -20,10 +20,6 @@ for filename in os.listdir('known_people'):
     known_faces.append(encoding)
     known_names.append(os.path.splitext(filename)[0])
 
-
-
-
-
 face_locations = []
 face_encodings = []
 face_names = []
@@ -66,6 +62,7 @@ while True:
                 if distance > 68:  
                     smiling = True
                     print("Face recognized and person is smiling")
+                    print("Nice smile! Your payment has been sent!")
                     authenticated = True
                 else:
                     smiling = False
@@ -79,7 +76,7 @@ while True:
     
     cv2.imshow('Video', frame)
     if authenticated == True:
-        print("Nice smile! Your payment has been sent!")
+        
         break
     
     if cv2.waitKey(1) & 0xFF == ord('q'):

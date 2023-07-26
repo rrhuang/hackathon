@@ -1,12 +1,6 @@
-# Create your models here.
-# #Associate users with a category: instructors and students
-# 2. Associate students and instructors with courses
-# 3. Keep track of the QR codes an instructor generate (include the time!)
-# 4. Keep track of the QR codes student in a class upload (include the time!)
-
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
+
 
 
 from django.contrib.auth.models import User
@@ -18,6 +12,7 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length = 50,default='SOME STRING')
     email = models.CharField(max_length=100, default='SOME STRING')
     face_picture = models.ImageField(upload_to='face_pictures/')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Transaction(models.Model):
     sender = models.ForeignKey(UserProfile, related_name='sent_transactions', on_delete=models.CASCADE)
@@ -26,13 +21,7 @@ class Transaction(models.Model):
 
 import logging
 def addUser(first, last, email,face_picture):
-    '''addUser creates a new user and saves it to the database, either as a Student or Instructor.
-    It does following checks:
-    - Checks to see no other instructor with the same email exists
-    - Saves the new record
-    - Creates a log message
-    '''
-
+    
     #log message
     logging.info('Trying to add a new user ' + str((first, last, email, face_picture)))
 

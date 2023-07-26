@@ -4,7 +4,6 @@ from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.models import User
 from .forms import *
 from .models import *
-import face_recognition
 
 def index(request):
     return render(request, 'app/index.html')
