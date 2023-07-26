@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron mt-5">
+            <h1 class="display-4">Welcome to the Main Page!</h1>
+            <p class="lead">You are logged in as {{ request.user.username }}</p>
+            <hr class="my-4">
+            <p>Click the button below to send money to another user.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'send_money' %}" role="button">Send Money</a>
+        </div>
+    </div>
+</body>
+</html>

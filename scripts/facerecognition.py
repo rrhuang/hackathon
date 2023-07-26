@@ -1,5 +1,6 @@
 import cv2
 import face_recognition
+import dlib
 import numpy as np
 import os
 
